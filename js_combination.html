@@ -3,7 +3,7 @@
 
 </head>
 <body>
-
+<script src="./Football.js"></script>
 
 <script> 	
 // WORKING with 3 ARRAYS: R1 R2 R3 R4 R5 R6 R7 R8 R9 R10  S1 S2 S3 S4 S5 S6 S7 S8 S9 S10  T1 T2 T3 T4 T5 T6 T7 T8 T9 T10
@@ -100,40 +100,50 @@ function thirdMarket(){
     return resultArr;     
 }
 
-console.log(thirdMarket());
+// console.log(thirdMarket());
 
 
 //console.log(secondMarketTwo());
 
 
 // ROUND 1
-// const H_odds_1 = [1.57,4.65,2.54,6.93,2.6,1.86,2.42,2.02,1.24,4.35];
-// const D_odds_1 = [3.99,3.53,3.09,3.93,3.38,3.61,3.21,3.2,6.84,4.02];
-// const A_odds_1 = [7.33,1.88,3.22,1.58,2.85,4.62,3.3,4.49,12.5,1.82];
+// const H_odds_1 = Rounds[0][0];
+// const D_odds_1 = Rounds[0][1];
+// const A_odds_1 = Rounds[0][2];
 
 // ROUND 2
-const H_odds_1 = [1.99,3.68,2.46,1.22,17.1,1.34,2.49,5.62,1.58,1.24];
-const D_odds_1 = [3.55,3.18,3.22,6.87, 8.1,5.27,3.3	,4.24,4.13,6.64];
-const A_odds_1 = [4.05,2.23,3.16,14.02,1.17,9.99,3.06,1.62,6.31,12.37];
+// const H_odds_1 = Rounds[1][0];
+// const D_odds_1 = Rounds[1][1];
+// const A_odds_1 = Rounds[1][2];
 
-// // ROIND  VARIABLE
-// const H_odds_1 = [11.24,2.34,2.42,2.65,1.37,1.15,2.34,6.45,2.22,2.61];
-// const D_odds_1 = [5.74,3.28,2.99,3.47,5.45,8.84,3.31,4.11,3.23,3.29];
-// const A_odds_1 = [1.3,3.35,3.5,2.72,8.28,20.96,3.31,1.58,3.66,2.92];
+// // ROIND  3
+// const H_odds_1 = Rounds[2][0];
+// const D_odds_1 = Rounds[2][1];
+// const A_odds_1 = Rounds[2][2];
 
-// // ROIND 4_1
-// const H_odds_1 = [11.24,2.34,2.42,2.65,1.37,1.15,2.34,6.45,2.22,2.61];
-// const D_odds_1 = [5.74,3.28,2.99,3.47,5.45,8.84,3.31,4.11,3.23,3.29];
-// const A_odds_1 = [1.3,3.35,3.5,2.72,8.28,20.96,3.31,1.58,3.66,2.92];
 
 // // ROIND 4
-// const H_odds_1 = [3.95,1.58,2.78,1.57,3.43,3.91,3.41,1.12,1.33,2.34];
-// const D_odds_1 = [3.78,4.06,3.23,3.96,3.39,3.89,3.36,10.3,5.52,3.37];
-// const A_odds_1 = [1.95,6.45,2.75,6.85,2.25,1.93,2.27,25.8,10.11,3.28];
-// // ROIND 4
-// const H_odds_1 = [3.95,1.58,2.78,1.57,3.43,3.91,3.41,1.12,1.33,2.34];
-// const D_odds_1 = [3.78,4.06,3.23,3.96,3.39,3.89,3.36,10.3,5.52,3.37];
-// const A_odds_1 = [1.95,6.45,2.75,6.85,2.25,1.93,2.27,25.8,10.11,3.28];
+// const H_odds_1 = Rounds[3][0];
+// const D_odds_1 = Rounds[3][1];
+// const A_odds_1 = Rounds[3][2];
+
+
+// // ROIND 12
+// const H_odds_1 = Rounds[11][0];
+// const D_odds_1 = Rounds[11][1];
+// const A_odds_1 = Rounds[11][2];
+
+
+// // ROIND 6
+// const H_odds_1 = Rounds[5][0];
+// const D_odds_1 = Rounds[5][1];
+// const A_odds_1 = Rounds[5][2];
+
+
+// // ROIND 18
+const H_odds_1 = Rounds[17][0];
+const D_odds_1 = Rounds[17][1];
+const A_odds_1 = Rounds[17][2];
 
 		
 //if the average of arrays of H to D > (H+D)/3 return H  else if av D+A <1 return D : H
@@ -216,6 +226,40 @@ function criteria(){
 
 // Outputs the List of minimum odds in a given round
 console.log(getMinOddList(H_odds_1,D_odds_1,A_odds_1));
+
+
+// Criteria Criteria  Criteria
+// FH= (H+A+D)/15+(H+D)/10+ A/5
+
+function fh_criteia(h,d,a){
+    let fh = 0;
+    for( let i =0; i<h.length; i++){
+        fh += ((h[i] + d[i] + a[i])/15) + ((h[i] + d[i])/10) + (a[i]/5);
+    }
+    return Number(fh.toFixed(2));
+}
+
+
+//FA= (H+A+D)/15+(A+D)/10+ H/5
+function fa_criteria(h,d,a){
+    let fa = 0;
+    for( let i =0; i<h.length; i++){
+        fa += ((h[i] + d[i] + a[i])/15) + ((a[i] + d[i])/10) + (h[i]/5);
+    }
+    return Number(fa.toFixed(2));
+}
+
+// Test the criteria
+let fh = fh_criteia(H_odds_1,D_odds_1,A_odds_1);
+let fa = fa_criteria(H_odds_1,D_odds_1,A_odds_1);
+
+console.log(`At Round 18, FH : ${fh} and FA: ${fa}`);
+
+// Computing the F* Criteria for the entire Rounds
+Rounds.forEach((a,index)=>{
+      console.log(`At Round ${++index}>  FH: ${fh_criteia(a[0],a[1],a[2])} and FA: ${fa_criteria(a[0],a[1],a[2])}`);
+});
+
 
 
 // GG/NG Criteria
@@ -534,15 +578,7 @@ function drawWinCount(gameArray,oddArray,num2Compare){
      return counter;
 }
 
-function countMinOdd(){
 
-}
-
-
-
-// let _g1000_Tenthousand = pd.filter((p) => p>1000 && p<=10000)?.sort((a, b) => (a > b ? -1 : 1));  //_g1000_Tenthousand
-// console.log("============= Product of Odds in the range: 1000 to 10,000 ======================");
-// console.log(_g1000_Tenthousand); 
 
 function filterMaches(arr){
     let pp =[];   // this array holds the count for each market
@@ -567,7 +603,7 @@ function filterMaches(arr){
 			 }
 		 }
 	//pp.push([index,[['H',ar1HomeCounter],['D',ar2DCounter], ['A',ar3ACounter]]]);
-     let firstFiveProduct = productOfFirst_5(getCombinationOdds(newArr));
+     let firstFiveProduct = productOfFirst_5(getCombinationOdds(newArr)); 
      let lastFiveProduct  = productOfLast_5(getCombinationOdds(newArr));
      let first_to_last    = parseFloat((firstFiveProduct/lastFiveProduct).toFixed(3)),
          last_to_first    = parseFloat((lastFiveProduct/firstFiveProduct).toFixed(3));
@@ -631,35 +667,92 @@ const minOddsOf59K = pp.filter((ar)=> compareArr(roundMinOddList,ar.oddList));
 console.log(minOddsOf59K);
 
 // MAIN OPERATIONAL OUTPUT
-  //  let _g514 = pp.filter((ar) => ar.H==5 && ar.D==1 && ar.A==4);
-  //  let _g523 = pp.filter((ar) => ar.H==5 && ar.D==2 && ar.A==3); 
-  let _g523  = pp.filter((ar) => ar.diff1>=0 &&  ar.diff1<=5);   
+  let o_range    = pp.filter((ar) => ar.prod>=18804 &&  ar.prod<=19767);   
+  let o_range_1  = pp.filter((ar) => ar.prod>=18804 &&  ar.prod<=19009);   
+  let o_range_2  = pp.filter((ar) => ar.prod>=18743 &&  ar.prod<=19706); 
+
+  // for round 12
+  let gt_18804  = pp.filter((ar) => ar.prod>18804 );   
+  let lt_18804  = pp.filter((ar) => ar.prod<18804 ); 
+
+  //for round 6
+  let gt_3642_84  = pp.filter((ar) => ar.prod>3642.84 );   
+  let lt_3642_84  = pp.filter((ar) => ar.prod<3642.84 ); 
+
+  //for round 18
+  let gt_69986_45  = pp.filter((ar) => ar.prod>69986.45 );   
+  let lt_69986_45  = pp.filter((ar) => ar.prod<69986.45 );   
+  
+// console.log( "Between 18804 And 19767");  
+// console.log( o_range); 
+// console.log( "Between 18804 And 19009");  
+// console.log( o_range_1);  
+// console.log( "Between 18743 and 19706");  
+// console.log( o_range_2); 
+
+// console.log( "Greater than 18804");  
+// console.log( gt_18804 ); 
+// let maxFunc = function (a){
+//         let items =[];
+//         a.forEach((ar,index)=>{
+//               items.push(ar.prod);  
+//         });
+//     let min = Math.min(...items);
+//     return min;
+// }
+// console.log( maxFunc(gt_18804) ); 
+
+// let minFunc = (a)=>{
+//     let items =[];
+//         a.forEach((ar,index)=>{
+//               items.push(ar.prod);  
+//         });
+//     let max = Math.max(...items);
+//     return max;
+// }
+
+// console.log( "Less Than 18804");  
+// console.log( lt_18804 ); 
+// console.log( minFunc(lt_18804) ); 
+
+
+
+
+console.log( "Greater than 3642.84");  
+console.log( gt_69986_45 ); 
+
+console.log( "Less Than 3642.84");  
+console.log( lt_3642_84 ); 
+
+let maxFunc = function (a){
+        let items =[];
+        a.forEach((ar,index)=>{
+              items.push(ar.prod);  
+        });
+    let min = Math.min(...items), 
+        minItems = items.sort((a, b)=>{return b - a}).slice(-5);
+    return minItems;
+}
+
+let minFunc = (a)=>{
+    let items =[];
+        a.forEach((ar,index)=>{
+              items.push(ar.prod);  
+        });
+    let max      = Math.max(...items), 
+        maxItems = items.sort((a, b)=>{return b - a}).slice(0,5);
+   
+    return maxItems;
+}
+
+console.log( ` Least Max: ${maxFunc(gt_69986_45)}, Largest Min: ${minFunc(lt_69986_45)}` ); 
  
- let _g525  = pp.filter((ar) => ar.diff1>=0 && ar.diff1<=3);   
- let _g526  = pp.filter((ar) => ar.diff1>=0 && ar.diff1<=2);   
- let _g527  = pp.filter((ar) => ar.diff1>=0 && ar.diff1<=1);   
-
-console.log( "Diffrence between -5 and 5");  
-console.log( _g523); 
-console.log( "Diffrence between -3 and 3");    
-console.log(_g525 );  
-console.log( "Diffrence between -2 and 2");    
-console.log(_g526 );  
-console.log( "Diffrence between -1 and 1");    
-console.log(_g527 );  
 
 
-//console.log(findProductOfOddPosition(pp[0].GAME));
-
-// Using Upper and Lower limit calculation
-//   let _g514_1 = pp.filter((ar) => {
-//        let upperLimit = 98.86*1.25, lowerLimit = 98.86/1.25;
-//        let upperLimit_Even = 76.50*1.25, lowerLimit_Even = 76.50/1.25;
-//        return (ar.f_odd>=lowerLimit && ar.f_odd<=upperLimit) && (ar.f_even>=lowerLimit_Even && ar.f_even<=upperLimit_Even)
-//      } )?.sort((a, b) => (a > b ? 1 : -1)); 
-   let product      = productOfOddsByCriteria(criteria());
-   let prod_odLow   = productOfOddPositionByCriteria(criteria())-1,     prod_oddHigh   = productOfOddPositionByCriteria(criteria())+1;
-   let prod_evenLow = productOfEvenPositionByCriteria(criteria())-1,    prod_evenHigh  = productOfEvenPositionByCriteria(criteria())+1;
+//
+let product      = productOfOddsByCriteria(criteria());
+let prod_odLow   = productOfOddPositionByCriteria(criteria())-1,     prod_oddHigh   = productOfOddPositionByCriteria(criteria())+1;
+let prod_evenLow = productOfEvenPositionByCriteria(criteria())-1,    prod_evenHigh  = productOfEvenPositionByCriteria(criteria())+1;
 
 // Using Upper and Lower limit calculation
 let _g514_1 = pp.filter((ar) => ar.sumF5-ar.sumOE>=-2 && ar.sumF5-ar.sumOE<=2 && ar._counter<5); 
@@ -672,39 +765,6 @@ let _g514_13 = pp.filter((ar) => { return  ar.sumF5 === ar.sumOE; });
 let _g514_11 = pp.filter((ar) => {  
      return ar.H>=2 && ar.D<=5 && ar.A<=5 && ar.HW<4 && ar.AW<4 && ar.DW<2 && ar.min_odd_counter>=4 && ar.max_odd_count<=3
    } )?.sort((a, b) => (a > b ? 1 : -1)); 
-//   let _g514_1 = pp.filter((ar) => (ar.f_odd>=79.088 && ar.f_odd<=123.575) && (ar.f_even>=61.2 && ar.f_even<=95.625) ).sort((a,b)=> (a.prod > b.prod ? 1 : -1));
-
-// EVEN > 60 and ODD < 60   
-//   let _g514_2 = pp.filter((ar) => {  
-//      let prod_odLow   = productOfOddPositionByCriteria(criteria())-1,     prod_oddHigh   = productOfOddPositionByCriteria(criteria())+1;
-//      let prod_evenLow = productOfEvenPositionByCriteria(criteria())-1,    prod_evenHigh  = productOfEvenPositionByCriteria(criteria())+1;
-//     return (ar.H>=5 && ar.H<9) && ar.D<=5 && ar.A<=5 && (ar.prod>1000 && ar.prod<10000) && ar.f_odd<60 && ar.f_even>60 
-//   })?.sort((a, b) => (a > b ? 1 : -1)); 
-
-// EVEN < 60 and ODD>60   
-//   let _g514_3 = pp.filter((ar) => {
-//      let average = ar.prod/10; 
-//     return (ar.H>=5 && ar.H<9) && ar.D<=5 && ar.A<=5 && (ar.prod>1000 && ar.prod<10000) && (average>=300 && average<=400) && ar.f_odd>60 && ar.f_even<60
-//   });
-
-// EVEN >60 and ODD>60   
-//   let _g514_4 = pp.filter((ar) => {
-//      let average = ar.prod/10; 
-//     return (ar.H>=5 && ar.H<9) && ar.D<=5 && ar.A<=5 && (ar.prod>1000 && ar.prod<10000) && (average>=300 && average<=400) && ar.f_odd>60 && ar.f_even>60
-//   });
-
-// console.log(_g514_1);
-// console.log(_g514_12);
-// console.log(_g514_13);
-// const groupByCategory = pp.reduce((group, product) => {
-//   const { prod } = product;
-//   group[prod] = group[prod] ?? [];
-//   group[prod].push(product);
-//   return group;
-// }, {});
-
-// console.log(_g514_11); 
-
 
 
 // console.log(criteria());
