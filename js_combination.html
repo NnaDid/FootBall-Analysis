@@ -9,50 +9,38 @@
 // WORKING with 3 ARRAYS: R1 R2 R3 R4 R5 R6 R7 R8 R9 R10  S1 S2 S3 S4 S5 S6 S7 S8 S9 S10  T1 T2 T3 T4 T5 T6 T7 T8 T9 T10
 
 const Rounds =[
-               [ [1.57,4.65,2.54,6.93,2.6,1.86,2.42,2.02,1.24,4.35],   [3.99,3.53,3.09,3.93,3.38,3.61,3.21,3.2,6.84,4.02], [7.33,1.88,3.22,1.58,2.85,4.62,3.3,4.49,12.5,1.82] ],
-               [ [1.99,3.68,2.46,1.22,17.1,1.34,2.49,5.62,1.58,1.24],  [3.55,3.18,3.22,6.87, 8.1,5.27,3.3,4.24,4.13,6.64], [4.05,2.23,3.16,14.02,1.17,9.99,3.06,1.62,6.31,12.37] ],
-               [ [11.24,2.34,2.42,2.65,1.37,1.15,2.34,6.45,2.22,2.61], [5.74,3.28,2.99,3.47,5.45,8.84,3.31,4.11,3.23,3.29], [1.3,3.35,3.5,2.72,8.28,20.96,3.31,1.58,3.66,2.92]],
-               [ [7.8,2.59,1.58,2.56,1.31,2.16,1.12,6.13,5.35,6.5],    [4.82,3.29,3.84,3.22,5.88,3.46,10.3,4.4,3.94,3.99],  [1.44,2.94,7.16,3.05,10.08,3.59,25.58,1.56,1.69,1.59] ],
-               [ [3.07,4.36,1.09,3.44,1.15,2.39,4.82,1.74,2.11,2.02],  [3.59,3.83,12.69,3.14,8.56,3.38,3.59,3.56,3.45,3.29], [2.35,1.84,29.6,2.36,22.29,3.15,1.84,5.64,3.73,4.26] ],
-               [ [2.85,1.59,1.18,1.71,2.11,21.18,3.28,5.31,6.66,1.4],  [3.42,3.94,7.59,3.63,3.29,8.57,3.39,3.95,4.56,5.23], [2.57,6.58,17.12,5.89,3.91,1.15,2.33,1.69,1.51,7.78] ],
-               [ [3.98,1.94,2.81,1.09,6.25,1.65,1.48,2.81,2.48,2.31],  [3.54,3.41,3.17,12,3.94,4.22,4.79,3.5,3.07,3.48], [2.01,4.45,2.76,29.39,1.62,5.33,6.74,2.58,3.28,3.22]  ],
-               [ [2.77,2.13,1.25,2.26,2.82,2.32,1.39,4.98,6.56,2.78],  [3.22,3.46,6.57,3.29,3.23,2.99,4.69,4.38,4.17,3.51], [2.77,3.68,12.8,3.52,2.73,3.73,9.75,1.66,1.56,2.58] ],
-               [ [1.77,1.8,3.89,2.19,1.07,2.54,2.21,11.38,1.8,1.62],   [3.83,3.48,3.71,3.2,13.99,3.44,3.46,5.3 ,3.6,4.14], [4.85,5.3,1.98,3.81,30.73,2.88,3.43,1.32,5.05,5.78] ],
-               [ [1.77,2,1.11,2.82,3.46,1.97,4.45,9.44,1.81,5.34],     [3.47,3.41,10.3,3.68,3.14,3.55,3.9,4.6,3.68,4.23], [5.61,4.17,28.73,2.46,2.35,4.08,1.81,1.41,4.83,1.64] ],
-               [ [3.95,1.58,2.78,1.57,3.43,3.91,3.41,1.12,1.33,2.34],  [3.78,4.06,3.23,3.96,3.39,3.89,3.36,10.3,5.52,3.37], [1.95,6.45,2.75,6.85,2.25,1.93,2.27,25.8,10.11,3.28] ],
-               [ [2.57,2.32,2.89,1.49,3.26,5.35,1.1,1.4,1.36,1.63],    [3.08,3.37,3.41,4.43,3.25,3.95,11.4,4.99,5.32,4.16], [3.14,3.28,2.55,7.43,2.39,1.69,26.03,8.53,8.85,5.53] ],
-               [ [12.21,6.06,1.45,2.75,1.47,2.83,3.04,3.39,1.59,3.02],  [6.74,4.41,4.5,3.3,4.37,3.15,3.39,3.66,3.69,3.13],  [1.24,1.56,8.16,2.75,8.3,2.77,2.46,2.17,7.55,2.63] ],
-               [ [3.6 ,2.56,1.13,2.35,2.4,1.56,4.34,1.2,2.85,1.46],     [3.23,3.33,9.49,3.26,2.91,3.97,3.46,7.38,3.51,4.45], [2.25,2.93,22.05,3.33,3.7,7.1,1.95,15.08,2.52,8.04] ],
-               [ [1.66,3.06,1.71,9.04,5.92,2.77,1.47,11.2,1.33,2.43],  [3.95,2.95,3.7,5.36,3.88,3.34,4.37,5.45,5.37,3.48],  [5.61,2.74,5.62,1.36,1.66,2.71,8.11,1.32,10.47,3.02] ],
-               [ [7.15,2.29,1.39,3.25,2.91,1.3,3.52,4.28,2.94,1.67],   [4.65,3.41,5.02,3.27,3.07,5.72,3.5,3.48,3.05,3.89],  [1.48,3.32,9.11,2.4,2.77,11.75,2.17,1.96,2.76,5.61] ],
-               [ [1.23,1.99,1.69,1.2,2.63,2.73,3.05,4.39,8.47,1.54],   [6.98,3.44,3.8,7.08,3.03,3.16,3.54,3.93,4.47,4.24],   [12.9,4.19,5.63,16.86,3.11,2.87,2.37,1.81,1.44,6.83] ],
-               [ [7.19,1.21,2.45,2.28,1.16,2.87,1.34,1.99,6.67,3.43],  [4.11,6.95,3.48,3.3,8.04,3.06,5.37,3.49,4.22,3.67],    [1.54,15.47,2.97,3.46,19.46,2.8,10.27,4.16,1.55,2.13] ],
-               [ [2.98,1.36,1.28,1.16,9.55,1.64,4.33,5.36,5.55,2.29],  [3.13,5.36,5.94,8.11,5.63,3.74,3.61,3.88,3.96,3.38],   [2.66,9.05,12.36,19.74,1.33,6.45,1.91,1.7,1.67,3.37]  ],
-               [ [1.74,1.46,1.57,2.04,3.36,1.4,5,12.6,3.79,1.38],      [3.72,4.4,3.86,3.26,3.26,5.38,3.8,7.09,3.51,5.34],    [5.27,8.14,7.35,4.24,2.34,7.75,1.76,1.23,2.06,8.56] ],
-               [ [2.01,1.38,8.76,2.3,2.01,2.43,1.27,2.57,5.89,1.98],   [3.53,5.38,4.88,3.16,3.56,3.06,5.98,3.49,4.12,3.83],  [4.03,8.29,1.4,3.57,3.97,3.41,12.42,2.81,1.61,3.82] ],
-               [ [3.53,1.94,2.36,2.15,2.42,10.4,1.21,1.71,2.09,1.19],  [3.9,3.37,3.33,3.23,3.25,5.18,6.76,3.98,3.54,7.33],   [2.03,4.56,3.27,3.89,3.22,1.34,17.62,5.06,3.71,17.09] ],
-               [ [2.32,1.72,2.89,2.07,1.36,1.22,2.13,3.28,23.6,5.52],  [3.17,3.82,3.39,3.17,5.13,7.02,3.66,3.47,9.69,3.73],  [3.49,5.3,2.55,4.27,9.56,13.99,3.46,2.28,1.13,1.71] ],
-               [ [1.99,3.68,2.46,1.22,17.1,1.34,2.49,5.62,1.58,1.24],  [3.55,3.18,3.22,6.87,8.1,5.27,3.3,4.24,4.13,6.64],    [4.05,2.23,3.16,14.02,1.17,9.99,3.06,1.62,6.31,12.37] ],
-               [ [1.43,2.67,2.01,1.23,2.56,2.45,3.34,3.8,1.25,9.15],   [4.45,3.23,3.49,6.61,3.35,3.23,3.45,3.6,7.04,5.94],   [9.1,2.87,4.04,14.77,2.91,3.17,2.26,2.04,10.44,1.32] ],
-               [ [10,5.06,2.53,1.83,1.17,5.54,1.98,2.03,1.71,1.56],    [6.09,4.04,3.33,3.5,8.42,3.95,3.56,3.29,3.74,4.3],    [1.3,1.71,2.98,4.99,16.55,1.67,4.07,4.23,5.57,6.31]  ],
-               [ [1.77,2.01,3.16,6.14,1.89,3.13,2.26,3.5,1.55,1.82],   [3.53,3.5,3.3,4.07,3.34,3.29,3.35,3.45,4.25,3.48],    [5.45,4.02,2.43,1.61,4.86,2.45,3.44,2.19,6.51,5.12]  ],
-               [ [5.54,3.93,2.16,1.99,1.39,1.11,1.27,3.35,2.37,2 ],    [3.59,3.35,3.23,3.43,5.2,11.3,5.95,3.28,3.26,3.56],   [1.74,2.08,3.82,4.16,8.09,23.48,12.48,2.33,3.29,3.97] ],
-               [ [1.75,1.45,2.91,1.78,14.54,2.18,2.75,8.4,6.37,1.89],  [3.54,4.54,3.24,3.38,8.38,3.35,3.29,4.79,4.02,3.29],  [5.64,8.08,2.62,5.67,1.18,3.63,2.74,1.42,1.59,5.06] ],
-               [ [4.53,2.72,1.59,3.12,3.01,1.11,1.17,1.58,2.39,1.54],  [3.83,3.12,4.34,3.3,3.43,10.7,7.96,3.91,3.54,4.25],   [1.82,2.92,5.84,2.46,2.46,23.42,18.46,6.96,3.03,6.75]  ],
-               [ [3.12,2.12,12.7 ,4.39 ,20.34,1.4,1.8,1.46,2.9,2.54],  [3.4,3.51,7.71,3.73,11.18,5.12 ,3.9,4.37,3.15,3.11],  [2.37,3.59,1.21,1.89,1.12,8.28,4.52,8.22,2.71,3.16] ],
-               [ [2.67,8.99,1.57,1.43,3.26,1.73,1.47,1.07,1.29,8.78],  [3.33,4.67,4.37,4.74,3.21,3.86,4.58,15.0,5.59,5.22],  [2.79,1.41,6,8.25,2.42,5.16,7.42,32.18,12.62,1.37] ],
-               [ [2.72,5.42,2.06,2.86,1.24,1.66,1.2,2.73,4.92,1.85],   [3.13,4.05,3.52,3.52,6.75,3.84,6.96,3.16,4.19,3.57],  [2.89,1.66,3.78,2.51,13.18,5.85,16.87,2.85,1.69,4.69]  ],
-               [ [2.3,1.32,12.91,1.73,3.62,1.99,1.27,1.94,3.24,4.06],  [3.27,5.83,6.74,3.8,3.7,3.25,6.37,3.17,3.55,3.57],    [3.42,9.64,1.24,5.28,2.05,4.44,10.95,4.93,2.25,1.96] ],
-               [ [1.71,2.45,3.23,16.2,1.51,1.23,2.19,1.26,2.72,6.47],  [4.17,3.06,3.51,7.79,4.65,6.55,3.44,6.2,3.4,4.7],     [4.77,3.37,2.28,1.18,6.39,14.75,3.5,13.19,2.7,1.5]   ],
-               [ [1.07,1.36,2.68,1.8,2.21,2.99,2.21,2.66,17.53,2.69],  [15.36,5.44,3.22,3.93,3.64,3.43,3.27,3.62,8.95,3.35], [34.6,8.82,2.86,4.5,3.28,2.45,3.65,2.64,1.16,2.75]   ],
-               [ [1.67,5.81,1.49,2.33,2.56,9.36,9.69,1.3,1.28,1.17],   [3.90,4.60,4.37,3.61,3.72,5.48,5.65,5.90,6.0,8.95],   [5.68,1.55,7.45,3.06,2.69,1.34,1.33, 10.5,11.95,15.45] ],
-               [ [2.1 ,1.9,1.39,1.3,1.31,2.41,2.45,1.77,2.54,15.03],   [3.81,3.75,5.1 ,6.08,5.83,3.64,3.55,4.31,3.65,7.73],  [3.41,4.15,8.35,9.72,10.08,2.91,2.91,4.21,2.74,1.19] ],
+              // ROUND xx
+               [ [1.61,4.89,2.45,6.27,2.5,1.89,2.31,2.01,1.26,4.54], 
+                 [3.93,3.96,3.39,4.22,3.29,3.58,3.46,3.43,6.32,3.67], 
+                 [6.35,1.74,3.12,1.57,3.03,4.43,3.16,4.09,12.93,1.85]
+              ],
+               [ [1.61,4.89,2.45,6.27,2.5], 
+                 [3.93,3.96,3.39,4.22,3.29], 
+                 [6.35,1.74,3.12,1.57,3.03]
+              ],
+               [ [1.89,2.31,2.01,1.26,4.54], 
+                 [3.58,3.46,3.43,6.32,3.67], 
+                 [4.43,3.16,4.09,12.93,1.85]
+              ],
+
             ];
 
 const ar1 = ["H1","H2","H3","H4","H5","H6","H7","H8","H9","H10"];
 const ar2 = ["D1","D2","D3","D4","D5","D6","D7","D8","D9","D10"];
 const ar3 = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10"];
 const len2 = 3**ar1.length;
+
+//=======================================================
+const ar1_first_half = ["H1","H2","H3","H4","H5"];
+const ar2_first_half = ["D1","D2","D3","D4","D5"];
+const ar3_first_half = ["A1","A2","A3","A4","A5"];
+
+//=======================================================
+const ar1_second_half = ["H6","H7","H8","H9","H10"];
+const ar2_second_half = ["D6","D7","D8","D9","D10"];
+const ar3_second_half = ["A6","A7","A8","A9","A10"];
+
+const len3 = 3**ar1_first_half.length;
 
 	
 function secondMarketTwo(){
@@ -75,75 +63,65 @@ function secondMarketTwo(){
 	return resultArr;
 }
 
-
-
-// GG /NG Market
-const gg_3rd    = ["G1","G2","G3","G4","G5","G6","G7","G8","G9","G10"];
-const nn_3rd    = ["N1","N2","N3","N4","N5","N6","N7","N8","N9","N10"];
-
-function thirdMarket(){
-    let resultArr =[], len = 2**nn_3rd.length; 
-    for (let i = 0; i < len; ++i) {
-            let k = i;
-            const arr = [];
-            for (let j = 0; j < 10; ++j) {
-                if (k % 2) {
-                    arr.push(nn_3rd[j]);
-                } else {
-                    arr.push(gg_3rd[j]);
-                }
-             k = Math.floor(k / 2);
-            }
-            //console.log(arr);
-            resultArr.push(arr);
-        }
-    return resultArr;     
+function secondMarketTwo_hf1(){
+	let resultArr =[];
+	for (let i = 0; i < len3; ++i) {
+	let k = i;
+	const arr = [];
+	for (let j = 0; j < ar1_first_half.length; ++j) {
+	   let y = k % 3;
+	   switch(y){
+	      case 0: arr.push(ar3_first_half[j]); break;
+	      case 1: arr.push(ar2_first_half[j]); break;
+	      case 2: arr.push(ar1_first_half[j]); break;
+	   }
+	  k = Math.floor(k / 3);
+	}
+	//console.log(arr);
+	resultArr.push(arr);
+	}
+	return resultArr;
 }
 
-// console.log(thirdMarket());
+function secondMarketTwo_hf2(){
+	let resultArr =[];
+	for (let i = 0; i < len3; ++i) {
+	let k = i;
+	const arr = [];
+	for (let j = 0; j < ar1_second_half.length; ++j) {
+	   let y = k % 3;
+	   switch(y){
+	      case 0: arr.push(ar3_second_half[j]); break;
+	      case 1: arr.push(ar2_second_half[j]); break;
+	      case 2: arr.push(ar1_second_half[j]); break;
+	   }
+	  k = Math.floor(k / 3);
+	}
+	//console.log(arr);
+	resultArr.push(arr);
+	}
+	return resultArr;
+}
 
 
-//console.log(secondMarketTwo());
 
+console.log(secondMarketTwo_hf1());
 
-// ROUND 1
-// const H_odds_1 = Rounds[0][0];
-// const D_odds_1 = Rounds[0][1];
-// const A_odds_1 = Rounds[0][2];
-
-// ROUND 2
-// const H_odds_1 = Rounds[1][0];
-// const D_odds_1 = Rounds[1][1];
-// const A_odds_1 = Rounds[1][2];
-
-// // ROIND  3
-// const H_odds_1 = Rounds[2][0];
-// const D_odds_1 = Rounds[2][1];
-// const A_odds_1 = Rounds[2][2];
-
-
-// // ROIND 4
-// const H_odds_1 = Rounds[3][0];
-// const D_odds_1 = Rounds[3][1];
-// const A_odds_1 = Rounds[3][2];
-
-
-// // ROIND 12
-// const H_odds_1 = Rounds[11][0];
-// const D_odds_1 = Rounds[11][1];
-// const A_odds_1 = Rounds[11][2];
+console.log(secondMarketTwo_hf2());
 
 
 // // ROIND 6
-// const H_odds_1 = Rounds[5][0];
-// const D_odds_1 = Rounds[5][1];
-// const A_odds_1 = Rounds[5][2];
-
-
-// // ROIND 18
-const H_odds_1 = Rounds[17][0];
-const D_odds_1 = Rounds[17][1];
-const A_odds_1 = Rounds[17][2];
+const H_odds_1 = Rounds[0][0];
+const D_odds_1 = Rounds[0][1];
+const A_odds_1 = Rounds[0][2];
+// first half of the 10 games
+const H_odds_11 = Rounds[1][0];
+const D_odds_11 = Rounds[1][1];
+const A_odds_11 = Rounds[1][2];
+// Second half of the 10 games
+const H_odds_12 = Rounds[2][0];
+const D_odds_12 = Rounds[2][1];
+const A_odds_12 = Rounds[2][2];
 
 		
 //if the average of arrays of H to D > (H+D)/3 return H  else if av D+A <1 return D : H
@@ -225,41 +203,109 @@ function criteria(){
 // GG Criteria
 
 // Outputs the List of minimum odds in a given round
-console.log(getMinOddList(H_odds_1,D_odds_1,A_odds_1));
+// console.log(getMinOddList(H_odds_1,D_odds_1,A_odds_1));
 
-
+//==================================================================================================================================//
 // Criteria Criteria  Criteria
 // FH= (H+A+D)/15+(H+D)/10+ A/5
 
 function fh_criteia(h,d,a){
-    let fh = 0;
+    let fh = [];
     for( let i =0; i<h.length; i++){
-        fh += ((h[i] + d[i] + a[i])/15) + ((h[i] + d[i])/10) + (a[i]/5);
+        let fhn = ((h[i] + d[i] + a[i])/3 + (h[i] + d[i])/2 + a[i])/5;
+            fhn =  Number(fhn.toFixed(2));
+        fh.push(fhn);
     }
-    return Number(fh.toFixed(2));
+    return fh;
 }
 
 
 //FA= (H+A+D)/15+(A+D)/10+ H/5
 function fa_criteria(h,d,a){
-    let fa = 0;
+    let fa = [];
     for( let i =0; i<h.length; i++){
-        fa += ((h[i] + d[i] + a[i])/15) + ((a[i] + d[i])/10) + (h[i]/5);
+        let fan = ((h[i] + d[i] + a[i])/3 + (a[i] + d[i])/2 + h[i])/5;
+            fan = Number(fan.toFixed(2));
+        fa.push(fan);
     }
-    return Number(fa.toFixed(2));
+    return fa;
 }
 
-// Test the criteria
-let fh = fh_criteia(H_odds_1,D_odds_1,A_odds_1);
-let fa = fa_criteria(H_odds_1,D_odds_1,A_odds_1);
-
-console.log(`At Round 18, FH : ${fh} and FA: ${fa}`);
 
 // Computing the F* Criteria for the entire Rounds
+let winOddArray = [];
 Rounds.forEach((a,index)=>{
-      console.log(`At Round ${++index}>  FH: ${fh_criteia(a[0],a[1],a[2])} and FA: ${fa_criteria(a[0],a[1],a[2])}`);
+    // fint the strt time
+    let starTime = performance.now();
+        let FH = fh_criteia(a[0],a[1],a[2]),
+            FA = fa_criteria(a[0],a[1],a[2]);
+
+        let _p = (ar)=>{
+                let prod =1;
+                for(let i =0; i<ar.length; i++){
+                    prod*=ar[i];
+                }
+                return prod;
+          };
+    let fh_product = _p(FH), 
+                 w1 = Number((fh_product/2).toFixed(2)),     // Half of Fh_product
+                 w3 = Number((1.5*fh_product).toFixed(2));   // w1 is the half of FH_product
+
+    let fa_product = _p(FA), 
+        w2  = Number((fa_product/2).toFixed(2)),    // Half of the FA_product
+        w4  =  Number((1.5*fa_product).toFixed(2));  // w2 is the half of Fa_product
+
+      
+       let w5 = Number((fh_product + fa_product).toFixed(2));    // sum of the FH_pro and FA_pro
+       
+       // get the product of even position of FA & Odd position of FH AND that of odd positionof FA & even position of FH
+       let prodFunc = (a1, a2)=>{
+                let _pr = 1, counter =0;
+               while(counter < a1.length){
+                    if(counter>0 && counter%2 == 0){
+                        _pr*=a1[counter]*a2[counter+1];
+                    }else{
+                        _pr*=a1[counter]*a2[counter+1]
+                    }
+               }
+       }
+
+       // function to calcuate the average of the odd and event position values of both the FH and FA
+       let _swapFunc =(r1,r2)=>{
+              let _product =1, _product2 =1; 
+              for(let i =0; i<r1.length; i++){
+                if(i%2==0){ _product*=r1[i]; } // taking odd position
+              }
+              for(let j =0; j<r2.length; j++){
+                    if(j%2==1){ _product2*=r1[j];}  // taking even position
+             }
+         return Number((_product*_product2)/10);
+       } 
+        let w6 = _swapFunc(FA,FH) + _swapFunc(FH,FA) ,
+            w7 =  w5 - w6;
+
+
+      winOddArray.push({
+             'FH':FH,
+             'FA':FA,
+             'FH_P':fh_product,
+             'FA_P':fa_product,
+             'w1':w1,
+             'w2':w2,
+             'w3':w3,
+             'w4':w4,
+             'w5':w5,
+             'w6':w6,
+             'w7':w7,
+      });
+      let endTime = performance.now();
+      //console.log(endTime - starTime);
 });
 
+//console.log(winOddArray);
+
+
+ 
 
 
 // GG/NG Criteria
@@ -276,8 +322,9 @@ function ggCriteria(){
 }
 
 
-console.log(ggCriteria());
+//console.log(ggCriteria());
 
+//===========================================================================================================================================
 
 
 // this function calculates the proucduct of odds using the output of the criteria funtion a bove
@@ -341,6 +388,9 @@ function productOfLast_5(givenArray){
 
 //ar1,ar2,ar3
 let PossibleOutCome = secondMarketTwo();
+let PossibleOut_hf1 = secondMarketTwo_hf1();
+let PossibleOut_hf2 = secondMarketTwo_hf2();
+
 let pd=[], sm=[];
 function findProductAndSum(givenArray){
     let ar1HomeCounter=0, ar2DCounter=0, ar3ACounter=0, resultArray=[]; 
@@ -449,6 +499,45 @@ function findProductOfOdds(givenArray){
     }
    return  Number(oddProduct.toFixed(2));
 }
+// this finction finds the product of the odds of any given set of odds in array form
+function findProductOfOdds_hf1(givenArray){ 
+    let oddProduct =1;
+    for(let j=0; j< givenArray.length; j++){
+      let itemIndex;  // index of the item in the Original Array
+      if(givenArray[j].includes("H")){
+          itemIndex   = ar1_first_half.indexOf(givenArray[j]);
+          oddProduct  = oddProduct*H_odds_11[itemIndex]; 
+      }else if(givenArray[j].includes("D")){
+          itemIndex   = ar2_first_half.indexOf(givenArray[j]); 
+          oddProduct  = oddProduct*D_odds_11[itemIndex]; 
+      }else{
+          itemIndex   = ar3_first_half.indexOf(givenArray[j]);
+          oddProduct  = oddProduct*A_odds_11[itemIndex]; 
+      }
+
+    }
+   return  Number(oddProduct.toFixed(2));
+}
+
+// this finction finds the product of the odds of any given set of odds in array form
+function findProductOfOdds_hf2(givenArray){ 
+    let oddProduct =1;
+    for(let j=0; j< givenArray.length; j++){
+      let itemIndex;  // index of the item in the Original Array
+      if(givenArray[j].includes("H")){
+          itemIndex   = ar1_second_half.indexOf(givenArray[j]);
+          oddProduct  = oddProduct*H_odds_12[itemIndex]; 
+      }else if(givenArray[j].includes("D")){
+          itemIndex   = ar2_second_half.indexOf(givenArray[j]); 
+          oddProduct  = oddProduct*D_odds_12[itemIndex]; 
+      }else{
+          itemIndex   = ar3_second_half.indexOf(givenArray[j]);
+          oddProduct  = oddProduct*A_odds_12[itemIndex]; 
+      }
+
+    }
+   return  Number(oddProduct.toFixed(2));
+}
 
 // this looks like the reverse bc of the indexing of arrays
 function findProductOfEvenPosition(givenArray){
@@ -508,6 +597,44 @@ function getCombinationOdds(givenArray){
       }else{
           itemIndex   = ar3.indexOf(givenArray[j]);
           newArray.push(A_odds_1[itemIndex]); 
+      }
+      
+    }
+    return newArray;
+}
+// function returns the array of odds of a given combination
+function getCombinationOdds_hf1(givenArray){
+     let newArray =[];
+     for(let j=0; j< givenArray.length; j++){
+      let itemIndex;  // index of the item in the Original Array 
+        if(givenArray[j].includes("H")){
+          itemIndex   = ar1_first_half.indexOf(givenArray[j]);
+          newArray.push(H_odds_11[itemIndex]); 
+      }else if(givenArray[j].includes("D")){
+          itemIndex   = ar2_first_half.indexOf(givenArray[j]); 
+         newArray.push(D_odds_11[itemIndex]); 
+      }else{
+          itemIndex   = ar3_first_half.indexOf(givenArray[j]);
+          newArray.push(A_odds_11[itemIndex]); 
+      }
+      
+    }
+    return newArray;
+}
+// function returns the array of odds of a given combination
+function getCombinationOdds_hf2(givenArray){
+     let newArray =[];
+     for(let j=0; j< givenArray.length; j++){
+      let itemIndex;  // index of the item in the Original Array 
+        if(givenArray[j].includes("H")){
+          itemIndex   = ar1_second_half.indexOf(givenArray[j]);
+          newArray.push(H_odds_12[itemIndex]); 
+      }else if(givenArray[j].includes("D")){
+          itemIndex   = ar2_second_half.indexOf(givenArray[j]); 
+         newArray.push(D_odds_12[itemIndex]); 
+      }else{
+          itemIndex   = ar3_second_half.indexOf(givenArray[j]);
+          newArray.push(A_odds_12[itemIndex]); 
       }
       
     }
@@ -579,7 +706,7 @@ function drawWinCount(gameArray,oddArray,num2Compare){
 }
 
 
-
+// for the entire 10 Games 
 function filterMaches(arr){
     let pp =[];   // this array holds the count for each market
     arr.forEach((ar,index)=>{
@@ -623,29 +750,84 @@ function filterMaches(arr){
      let minOddCount = getMinOddCountPerGame(minOddList,combinedOdd);
      let maxOddCount = getMaxOddCountPerGame(maxOddList,combinedOdd); 
 
-	pp.push({ 'H':ar1HomeCounter,
-              'D':ar2DCounter,
-              'A':ar3ACounter,
-              '_counter':centralCounter,
-              'min_odd_counter':minOddCount,
-              'max_odd_count':maxOddCount,
-              'HW':homeWins,
-              'AW':awayWins,
-              'DW':drawWins,
+	pp.push({ //'H':ar1HomeCounter,
+            //   'D':ar2DCounter,
+            //   'A':ar3ACounter,
+            //   '_counter':centralCounter,
+            //   'min_odd_counter':minOddCount,
+            //   'max_odd_count':maxOddCount,
+            //   'HW':homeWins,
+            //   'AW':awayWins,
+            //   'DW':drawWins,
               'GAME':newArr,
               'oddList':getCombinationOdds(newArr),
               'prod':findProductOfOdds(newArr),
-              'sum':findSumOfOdds(newArr),
-              'f_odd':findProductOfOddPosition(newArr),
-              'f_even':findProductOfEvenPosition(newArr),
-              'firstFiveProd':firstFiveProduct,
-              'lastFiveProd':lastFiveProduct,
-              'first_to_last':first_to_last,
-              'last_to_first':last_to_first,
-              'sumF5':sumOfFirstAndLastFivePoducts,
-              'sumOE':sumOfOddAndEvenOddProduct,
-              'diff1':Number(sumOfFirstAndLastFivePoducts - sumOfOddAndEvenOddProduct), 
+            //   'sum':findSumOfOdds(newArr),
+            //   'f_odd':findProductOfOddPosition(newArr),
+            //   'f_even':findProductOfEvenPosition(newArr),
+              'f5':firstFiveProduct,
+              'l5':lastFiveProduct,
+            //   'first_to_last':first_to_last,
+            //   'last_to_first':last_to_first,
+            //   'sumF5':sumOfFirstAndLastFivePoducts,
+            //   'sumOE':sumOfOddAndEvenOddProduct,
+            //   'diff1':Number(sumOfFirstAndLastFivePoducts - sumOfOddAndEvenOddProduct), 
           });
+   });
+  return pp;
+}
+
+
+
+// for the first five games
+function filterMaches_first_half(arr){
+    let pp =[];   // this array holds the count for each market
+    arr.forEach((ar,index)=>{ 
+		 let newArr =[];
+		 for(let j=0; j< ar.length; j++){
+		     if(ar1_first_half.includes(ar[j])){   // ar1 Home odds 
+				newArr.push(ar1_first_half[j]);				
+			 } else if(ar2_first_half.includes(ar[j])){  // ar2 Draw odds  
+				newArr.push(ar2_first_half[j]);
+			 }
+			 else if(ar3_first_half.includes(ar[j])){   //ar3 Away odds  
+				newArr.push(ar3_first_half[j]);
+			 }else{
+			    // do nothing
+				console.log("nothig to do");
+			 }
+		 }  
+    let combinedOdd  = getCombinationOdds_hf1(newArr);    // get the odd list of the game combination  
+
+	pp.push({ 'GAME':newArr,  'oddList':combinedOdd, 'prod':findProductOfOdds_hf1(newArr) });
+   });
+  return pp;
+}
+
+
+
+// for the Second five games
+function filterMaches_second_half(arr){
+    let pp =[];   // this array holds the count for each market
+    arr.forEach((ar,index)=>{ 
+		 let newArr =[];
+		 for(let j=0; j< ar.length; j++){
+		     if(ar1_second_half.includes(ar[j])){   // ar1 Home odds 
+				newArr.push(ar1_second_half[j]);				
+			 } else if(ar2_second_half.includes(ar[j])){  // ar2 Draw odds  
+				newArr.push(ar2_second_half[j]);
+			 }
+			 else if(ar3_second_half.includes(ar[j])){   //ar3 Away odds  
+				newArr.push(ar3_second_half[j]);
+			 }else{
+			    // do nothing
+				console.log("nothig to do");
+			 }
+		 }  
+    let combinedOdd  = getCombinationOdds_hf2(newArr);    // get the odd list of the game combination  
+
+	pp.push({  'GAME':newArr, 'oddList':combinedOdd, 'prod':findProductOfOdds_hf2(newArr) });
+
    });
   return pp;
 }
@@ -658,30 +840,123 @@ function compareArr(a1,a2){
 
 // The output of analysis
 const pp = filterMaches(PossibleOutCome);
+// overal ranking
+const sorted_pp = pp.sort((a,b)=> a.prod -b.prod);
+// console.log(sorted_pp);
+
+const pp_1 = filterMaches_first_half(PossibleOut_hf1);
+// console.log(pp_1);
+const pp_2 = filterMaches_second_half(PossibleOut_hf2)
+// console.log(pp_2);
+
+const sorted_pp_1 = pp_1.sort((a,b) => a.prod - b.prod );
+const sorted_pp_2 = pp_2.sort((a,b) => a.prod - b.prod );
+
+// console.log(sorted_pp_1);
+// console.log(sorted_pp_2);
+//================================================================================================================
+
+/* 
+    Partition each of the sorted 243 set into rows of 38 each and then into 
+    rows of 5 each after it is found that the remainder is 15
+*/
+
+
+ function sliceIntoChunks(arr, chunkSize,newChunkSize) {
+    const res = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+        const chunk = arr.slice(i, i + chunkSize);
+        if(chunk.length === chunkSize){
+            res.push(chunk); 
+        } else{
+            seconTier(chunk, newChunkSize);
+        }
+    }
+// this sub function will take the last chunk and perfomr the operation 
+    function seconTier(a, chunk_size){
+        for (let i = 0; i < a.length; i += chunk_size) {
+            const nwChunk = a.slice(i, i + chunk_size);
+            res.push(nwChunk); 
+        }
+    }
+
+    return res;
+}
+
+console.log(sliceIntoChunks(sorted_pp_1, 38,5));
+console.log(sliceIntoChunks(sorted_pp_2, 38,5));
+
+
+
+
+/*
+  Cobine the two possible outcomes of 
+  the first and second games 
+*/
+const CombinedSet_59k =[];
+pp_1.forEach((item1)=>{
+    let totalOdd;
+    pp_2.forEach((item2)=>{
+        totalOdd = Number((item1.prod * item2.prod).toFixed(2));
+        CombinedSet_59k.push({'combinedOdd':totalOdd, 'f5':item1, 'l5':item2});
+    });
+});
+
+const sorted_combined = CombinedSet_59k.sort((a,b)=> a.combinedOdd -b.combinedOdd);
+// console.log(sorted_combined);
+// ====================================================================================================================
+
+function __compare__Arrays(a,b){
+    let res =[];
+    for(let i =0; i < a.length; i++){
+        if(a[i].prod === b[i].combinedOdd){
+            res.push({'original':a[i], 'combined':b[i]});
+        }
+    }
+    return res;
+}
+
+// console.log(__compare__Arrays(sorted_pp,sorted_combined));
+
+
+
+
+
+
+
+
+
+
+//  rank of first five
+// console.log(pp.sort((a,b)=> a.f5 -b.f5));
+
+
+// // rank of last five 
+// console.log(pp.sort((a,b)=> a.l5 -b.l5));
 
 //Get the mimimun odd list per Round
 const roundMinOddList = getMinOddList(H_odds_1,D_odds_1,A_odds_1);
 
-// Show the combination out of the 59000 outputs that has he minimum odds
+// Show the combination out of the 59049 outputs that has he minimum odds
 const minOddsOf59K = pp.filter((ar)=> compareArr(roundMinOddList,ar.oddList));
-console.log(minOddsOf59K);
+// console.log(minOddsOf59K);
 
 // MAIN OPERATIONAL OUTPUT
-  let o_range    = pp.filter((ar) => ar.prod>=18804 &&  ar.prod<=19767);   
-  let o_range_1  = pp.filter((ar) => ar.prod>=18804 &&  ar.prod<=19009);   
-  let o_range_2  = pp.filter((ar) => ar.prod>=18743 &&  ar.prod<=19706); 
+//   let o_range    = pp.filter((ar) => ar.prod>=500000);   
+//   let o_range_1  = pp.filter((ar) => ar.prod<500000); 
+//   console.log( o_range ); 
+//   console.log( o_range_1 ); 
+//   // for round 12
+//   let gt_18804  = pp.filter((ar) => ar.prod>18804 );   
+//   let lt_18804  = pp.filter((ar) => ar.prod<18804 ); 
 
-  // for round 12
-  let gt_18804  = pp.filter((ar) => ar.prod>18804 );   
-  let lt_18804  = pp.filter((ar) => ar.prod<18804 ); 
+//   //for round 6
+//   let gt_3642_84  = pp.filter((ar) => ar.prod>3642.84 );   
+//   let lt_3642_84  = pp.filter((ar) => ar.prod<3642.84 ); 
 
-  //for round 6
-  let gt_3642_84  = pp.filter((ar) => ar.prod>3642.84 );   
-  let lt_3642_84  = pp.filter((ar) => ar.prod<3642.84 ); 
-
-  //for round 18
-  let gt_69986_45  = pp.filter((ar) => ar.prod>69986.45 );   
-  let lt_69986_45  = pp.filter((ar) => ar.prod<69986.45 );   
+//   //for round 18
+//   let gt_69986_45  = pp.filter((ar) => ar.prod>69986.45 );   
+//   let lt_69986_45  = pp.filter((ar) => ar.prod<69986.45 );   
   
 // console.log( "Between 18804 And 19767");  
 // console.log( o_range); 
@@ -718,53 +993,48 @@ console.log(minOddsOf59K);
 
 
 
-console.log( "Greater than 3642.84");  
-console.log( gt_69986_45 ); 
+// console.log( "Greater than 3642.84");  
+// console.log( gt_69986_45 ); 
 
-console.log( "Less Than 3642.84");  
-console.log( lt_3642_84 ); 
+// console.log( "Less Than 3642.84");  
+// console.log( lt_3642_84 ); 
 
 let maxFunc = function (a){
         let items =[];
-        a.forEach((ar,index)=>{
-              items.push(ar.prod);  
-        });
-    let min = Math.min(...items), 
+        a.forEach((ar,index)=>{  items.push(ar.prod);   });
+    let min      = Math.min(...items), 
         minItems = items.sort((a, b)=>{return b - a}).slice(-5);
     return minItems;
 }
 
 let minFunc = (a)=>{
     let items =[];
-        a.forEach((ar,index)=>{
-              items.push(ar.prod);  
-        });
+        a.forEach((ar,index)=>{  items.push(ar.prod);  });
     let max      = Math.max(...items), 
-        maxItems = items.sort((a, b)=>{return b - a}).slice(0,5);
-   
+        maxItems = items.sort((a, b)=>{return b - a}).slice(0,5);  
     return maxItems;
 }
 
-console.log( ` Least Max: ${maxFunc(gt_69986_45)}, Largest Min: ${minFunc(lt_69986_45)}` ); 
+//console.log( ` Least Max: ${maxFunc(gt_69986_45)}, Largest Min: ${minFunc(lt_69986_45)}` ); 
  
 
 
 //
-let product      = productOfOddsByCriteria(criteria());
-let prod_odLow   = productOfOddPositionByCriteria(criteria())-1,     prod_oddHigh   = productOfOddPositionByCriteria(criteria())+1;
-let prod_evenLow = productOfEvenPositionByCriteria(criteria())-1,    prod_evenHigh  = productOfEvenPositionByCriteria(criteria())+1;
+// let product      = productOfOddsByCriteria(criteria());
+// let prod_odLow   = productOfOddPositionByCriteria(criteria())-1,     prod_oddHigh   = productOfOddPositionByCriteria(criteria())+1;
+// let prod_evenLow = productOfEvenPositionByCriteria(criteria())-1,    prod_evenHigh  = productOfEvenPositionByCriteria(criteria())+1;
 
-// Using Upper and Lower limit calculation
-let _g514_1 = pp.filter((ar) => ar.sumF5-ar.sumOE>=-2 && ar.sumF5-ar.sumOE<=2 && ar._counter<5); 
+// // Using Upper and Lower limit calculation
+// let _g514_1 = pp.filter((ar) => ar.sumF5-ar.sumOE>=-2 && ar.sumF5-ar.sumOE<=2 && ar._counter<5); 
 
-let _g514_12 = pp.filter((ar) => ar.sumF5-ar.sumOE>=-1 && ar.sumF5-ar.sumOE<=1 && ar._counter<5); 
+// let _g514_12 = pp.filter((ar) => ar.sumF5-ar.sumOE>=-1 && ar.sumF5-ar.sumOE<=1 && ar._counter<5); 
 
-let _g514_13 = pp.filter((ar) => { return  ar.sumF5 === ar.sumOE; }); 
+// let _g514_13 = pp.filter((ar) => { return  ar.sumF5 === ar.sumOE; }); 
 
-// min_odd_counter  max_odd_count
-let _g514_11 = pp.filter((ar) => {  
-     return ar.H>=2 && ar.D<=5 && ar.A<=5 && ar.HW<4 && ar.AW<4 && ar.DW<2 && ar.min_odd_counter>=4 && ar.max_odd_count<=3
-   } )?.sort((a, b) => (a > b ? 1 : -1)); 
+// // min_odd_counter  max_odd_count
+// let _g514_11 = pp.filter((ar) => {  
+//      return ar.H>=2 && ar.D<=5 && ar.A<=5 && ar.HW<4 && ar.AW<4 && ar.DW<2 && ar.min_odd_counter>=4 && ar.max_odd_count<=3
+//    } )?.sort((a, b) => (a > b ? 1 : -1)); 
 
 
 // console.log(criteria());
@@ -807,6 +1077,30 @@ function getRounds_and_odds(arr){
 
 //Rounds
 let newExpected = selectRounds38(PossibleOutCome);
+// console.log(newExpected);
+
+let sumsArr =[];
+newExpected.forEach((arr,index)=>{
+      // get the sum of of the odds of the 380 Matches
+         let sumFUnc = (ar)=>{
+            let sum =0;
+            for(let i =0; i<ar.length; i++){
+                sum += findSumOfOddsWithParams(ar[i],Rounds[0]);   
+            }
+            return sum;
+        }
+        //Number(sumFUnc(arr,Rounds[index]).toFixed(2))
+        sumsArr.push(index);
+});
+
+// Display the sum of the odds for the 38 rounds
+//console.log(sumsArr);
+
+// How many of the sums of the odds of the 38 rounds fall between 1043 and 1100
+// let sumsIntheRange = sumsArr.filter((a)=> a>=1000 && a<=1400);
+
+// console.log(sumsIntheRange);
+  
 
 let round_38    = getRounds_and_odds(Rounds);
 // console.log(round_38); 
