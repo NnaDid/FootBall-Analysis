@@ -1,6 +1,6 @@
 <html>
 <head>
-
+    <meta charset="utf-8">
 </head>
 <body>
 <script src="./Football.js"></script>
@@ -10,21 +10,37 @@
 
 const Rounds =[
               // ROUND xx
-               [ [1.61,4.89,2.45,6.27,2.5,1.89,2.31,2.01,1.26,4.54], 
-                 [3.93,3.96,3.39,4.22,3.29,3.58,3.46,3.43,6.32,3.67], 
-                 [6.35,1.74,3.12,1.57,3.03,4.43,3.16,4.09,12.93,1.85]
+               [ [1.57,4.65,2.54,6.93,2.6,1.86,2.42,2.02,1.24,4.35], 
+                 [3.99,3.53,3.09,3.93,3.38,3.61,3.21,3.2,6.84,4.02], 
+                 [7.33,1.88,3.22,1.58,2.85,4.62,3.3,4.49,12.5,1.82]
+               ],
+
+             [   [1.57,4.65,2.54,6.93,2.6], 
+                 [3.99,3.53,3.09,3.93,3.38], 
+                 [7.33,1.88,3.22,1.58,2.85]
               ],
-               [ [1.61,4.89,2.45,6.27,2.5], 
-                 [3.93,3.96,3.39,4.22,3.29], 
-                 [6.35,1.74,3.12,1.57,3.03]
-              ],
-               [ [1.89,2.31,2.01,1.26,4.54], 
-                 [3.58,3.46,3.43,6.32,3.67], 
-                 [4.43,3.16,4.09,12.93,1.85]
+               [ [1.86,2.42,2.02,1.24,4.35], 
+                 [3.61,3.21,3.2,6.84,4.02], 
+                 [4.62,3.3,4.49,12.5,1.82]
               ],
 
             ];
 
+
+            // Round 2 2
+            //    [ [3.29, 2.09, 1.27, 2.15, 1.83, 1.84, 1.08, 2.43, 5.89, 7.89], 
+            //      [3.13, 3.56, 6.21, 3.38, 3.55, 3.78, 13.02, 3.08, 3.6, 5.19	], 
+            //      [2.44, 3.68, 11.99, 3.71, 4.89, 4.44, 35.88, 3.38, 1.71, 1.4]
+            //    ],
+
+            //  [   [3.29, 2.09, 1.27, 2.15, 1.83], 
+            //      [3.13, 3.56, 6.21, 3.38, 3.55], 
+            //      [2.44, 3.68, 11.99, 3.71, 4.89]
+            //   ],
+            //    [ [1.84, 1.08, 2.43, 5.89, 7.89], 
+            //      [3.78, 13.02, 3.08, 3.6, 5.19], 
+            //      [4.44, 35.88, 3.38, 1.71, 1.4]
+            //   ],
 const ar1 = ["H1","H2","H3","H4","H5","H6","H7","H8","H9","H10"];
 const ar2 = ["D1","D2","D3","D4","D5","D6","D7","D8","D9","D10"];
 const ar3 = ["A1","A2","A3","A4","A5","A6","A7","A8","A9","A10"];
@@ -516,7 +532,7 @@ function findProductOfOdds_hf1(givenArray){
       }
 
     }
-   return  Number(oddProduct.toFixed(2));
+   return  Number(oddProduct.toFixed(4));
 }
 
 // this finction finds the product of the odds of any given set of odds in array form
@@ -536,7 +552,7 @@ function findProductOfOdds_hf2(givenArray){
       }
 
     }
-   return  Number(oddProduct.toFixed(2));
+   return  Number(oddProduct.toFixed(4));
 }
 
 // this looks like the reverse bc of the indexing of arrays
@@ -759,10 +775,11 @@ function filterMaches(arr){
             //   'HW':homeWins,
             //   'AW':awayWins,
             //   'DW':drawWins,
-              'GAME':newArr,
+            //   'GAME':newArr,
               'oddList':getCombinationOdds(newArr),
               'prod':findProductOfOdds(newArr),
-            //   'sum':findSumOfOdds(newArr),
+              'sum':findSumOfOdds(newArr),
+            //   'sum2':sumAllElements(getCombinationOdds(newArr)),
             //   'f_odd':findProductOfOddPosition(newArr),
             //   'f_even':findProductOfEvenPosition(newArr),
               'f5':firstFiveProduct,
@@ -775,6 +792,15 @@ function filterMaches(arr){
           });
    });
   return pp;
+}
+
+
+function sumAllElements(ar){
+   let total = 0;
+   ar.forEach((item)=>{
+        total+=item;
+   });
+   return Number(total.toFixed(2));
 }
 
 
@@ -841,8 +867,8 @@ function compareArr(a1,a2){
 // The output of analysis
 const pp = filterMaches(PossibleOutCome);
 // overal ranking
-const sorted_pp = pp.sort((a,b)=> a.prod -b.prod);
-// console.log(sorted_pp);
+const sorted_pp = pp.sort((a,b)=> a.prod - b.prod);
+console.log(sorted_pp);
 
 const pp_1 = filterMaches_first_half(PossibleOut_hf1);
 // console.log(pp_1);
@@ -852,8 +878,25 @@ const pp_2 = filterMaches_second_half(PossibleOut_hf2)
 const sorted_pp_1 = pp_1.sort((a,b) => a.prod - b.prod );
 const sorted_pp_2 = pp_2.sort((a,b) => a.prod - b.prod );
 
+
+
 // console.log(sorted_pp_1);
 // console.log(sorted_pp_2);
+
+// multipy out the procudct of the elements corresponding to their positions on the two lists of the first half 243 and second half 243
+function getCrossProduct_f5_l5(a,b){
+    let res = [], prod =1;
+    for( let i = 0; i < b.length; i++){
+        prod = a[i].prod * b[i].prod;
+        prod = Number(prod.toFixed(2));
+        res.push({'prod':prod,'a':a[i], 'b':b[i]});
+    }
+    return res;
+}
+
+
+let Resultant = getCrossProduct_f5_l5(pp_1,pp_2);
+// console.log(Resultant);
 //================================================================================================================
 
 /* 
@@ -869,10 +912,13 @@ const sorted_pp_2 = pp_2.sort((a,b) => a.prod - b.prod );
         if(chunk.length === chunkSize){
             res.push(chunk); 
         } else{
-            seconTier(chunk, newChunkSize);
+            if(newChunkSize){
+                seconTier(chunk, newChunkSize);
+            }
+             
         }
     }
-// this sub function will take the last chunk and perfomr the operation 
+// this sub function will take the last chunk and perfomr the operation and break into 5 - 5 chunks
     function seconTier(a, chunk_size){
         for (let i = 0; i < a.length; i += chunk_size) {
             const nwChunk = a.slice(i, i + chunk_size);
@@ -883,10 +929,221 @@ const sorted_pp_2 = pp_2.sort((a,b) => a.prod - b.prod );
     return res;
 }
 
-console.log(sliceIntoChunks(sorted_pp_1, 38,5));
-console.log(sliceIntoChunks(sorted_pp_2, 38,5));
+// console.log(sliceIntoChunks(pp_1, 38,5));
+// console.log(sliceIntoChunks(pp_2, 38,5));
+
+// Spliting the 243 set of Numerator and Denominator
+const firstSet_243_rows  = sliceIntoChunks(pp_1, 38,5);
+const secondSet_243_rows = sliceIntoChunks(pp_2, 38,5);
+//=======================================================//
 
 
+
+/* 
+ This function does the following things:
+ 1. spit the entire 59049 sample space in to buches of 243 
+ 2. split each of the 243 into chunks of 38 and then into chunks of 5 for the last 15 sets
+ 3. using one of the 59k data test to get the correct table number, the row and column position 
+    inside the 243 which was already splited into chuns of 38 and then 5
+ 4. Map the row and column positions to those of them in the SEPARATE NUMERATOR AND DENOMINATOR
+    and return the values for which the product: NUM(x,y)*D(x,y) = G(x,y)
+*/
+
+
+function runMappingAnalysis(inputAr){
+
+   /// Split the  59059 into sets of 243 each 
+    let newSets_243 = sliceIntoChunks(inputAr, 243);
+
+    // REPORT THE 243 ARRAYS IN BLOCKS OF 38 
+   let subset_243 = sliceIntoChunks(newSets_243, 38, 5);
+
+//  const broken_downfuther =[];
+//   // then futher split into 38 sets and then 5
+//    for (let item of newSets_243) {
+//        let new_sets = sliceIntoChunks(item, 38,5);
+//        broken_downfuther.push(new_sets);
+//    }
+//    console.log(newSets_243);
+//    console.log(broken_downfuther);
+   console.log(subset_243);
+
+    // Keep record f any of the 59049 that saisfy the condition
+    let testResultArr = [];
+
+     // This inner function does the actual analysis
+    function innerAnalysis(inputAr){ 
+        inputAr.forEach((a)=>{
+            let testInput     = a.prod;  // you can still get f5 and l5
+            let filerout_test = broken_downfuther.find((a) => a.find((b) => b.find((c) => c.prod === testInput)));
+        // console.log(filerout_test);
+        // get the table position
+            let tablePos      = broken_downfuther.indexOf(filerout_test);
+
+            // find the base of the test input
+            let HR_base_search = filerout_test.find((a) => a.find((b)=> b.prod === testInput));
+            // console.log(HR_base_search);
+            // get the horizontal rank 
+            let hr = filerout_test.indexOf(HR_base_search); 
+
+            // get the vertical rank
+            let vr = HR_base_search.find((a) => a.prod === testInput);
+                vr = HR_base_search.indexOf(vr)
+
+            let N_x_y = firstSet_243_rows[hr][vr];
+            let D_x_y = secondSet_243_rows[hr][vr];
+            // console.log(tablePos, hr , vr);
+            let product_f5_l5 = Number((N_x_y.prod * D_x_y.prod).toFixed(2));
+
+            // check if the testInut is same as the product of the l5 and f5 of the NUMBERATOR and Denominator
+            if(product_f5_l5 == testInput){
+                testResultArr.push(
+                    {
+                        'testInput':a,
+                        'prodResult':product_f5_l5,
+                        'TabNo':tablePos,
+                        'x_y':[hr,vr],
+                        'N_x_y':N_x_y,
+                        'D_x_y':D_x_y
+                    }
+              );
+            }
+
+        });
+    }
+    // innerAnalysis(inputAr);
+
+    // return testResultArr;
+}
+
+// running the analysis
+// let analysisResult = runMappingAnalysis(pp);   // testing for just one value
+// console.log(analysisResult);
+let newSets_243_of59k = sliceIntoChunks(pp, 243);
+console.log(newSets_243_of59k);
+let newSets_243_of59k_sub_38 = sliceIntoChunks(newSets_243_of59k, 38,5);
+console.log(newSets_243_of59k_sub_38);
+//===================================================================================================
+let newSets_38_of59k = sliceIntoChunks(pp, 38,35);
+console.log(newSets_38_of59k);
+
+function getSumOfodds_38_of59k_btw_1100_1140(inputArr){
+     const result =[];
+    for (let item of inputArr){
+          let sums = sumAllElements(item),
+              average = Number((sums/380).toFixed(2));
+          if(average === 2.89){
+            result.push(item);
+          }
+    }
+    function sumAllElements(ar){
+        let total = 0;
+        for(let a of ar){  total+=a.sum; }
+         return Number(total.toFixed(2));
+     }
+  return result;
+}
+
+const resultOfSums = getSumOfodds_38_of59k_btw_1100_1140(newSets_38_of59k);
+console.log(resultOfSums);
+// let ranksResult = generateRanks(sorted_pp[798], [pp_1,pp_2],firstSet_243_rows, secondSet_243_rows);
+//==================================================================================================//
+
+
+//==================================================================================================//
+
+
+
+
+
+
+// console.log(ranksResult);
+const o_of_ranked_59k =[];
+const allEqual = arr => arr.every(val => val === arr[0]);  // this function checks if all the elements in an array are equal
+
+for (let item of sorted_pp){
+    let ranksResult = generateRanks(item, [pp_1,pp_2],firstSet_243_rows, secondSet_243_rows);
+    // let check       = allEqual(ranksResult[2]);
+    o_of_ranked_59k.push({'xteristics':ranksResult,'result':item, 'rank':pp.indexOf(item)});
+}
+// let ranksResult   = generateRanks(sorted_pp[0], [pp_1,pp_2],firstSet_243_rows, secondSet_243_rows);
+
+// console.log(ranksResult);
+
+// console.log(o_of_ranked_59k);
+// let fil_10_11 = o_of_ranked_59k.filter((a) => a.result.prod >= 1455 && a.result.prod <=1456);
+// console.log(fil_10_11);
+// //sorted_pp
+
+// selected few with same characteristics
+// let selectedFew = sorted_pp.filter((a) => a.prod >500000);
+// console.log(selectedFew);
+// Rus function attempts to find the [GR, VR, and HR] of a given 
+// odd product coordinates, 
+// OD(n,d) where n is the NUMBERATOR and d is the DENOMINATOR
+
+function generateRanks(hayStack, global_243,numerator, denominator){
+    // get the first five and last five products from the origial sets of 59049
+       let f5 = hayStack.f5, 
+           l5 = hayStack.l5;
+
+       let RANKED_BASE_NUM  = generateHorizontalRank(f5,numerator)[0];
+       let RANKED_BASE_DENO = generateHorizontalRank(l5,denominator)[0];
+           // Considering Numerator
+        // filter out the products
+       let g_R_1     = global_243[0].find((a) => a.prod === f5 ),
+            gR_1     = [global_243[0].indexOf(g_R_1), g_R_1.prod]; // Global 1 [position, product] : Numerator
+
+       let vR_1    = [RANKED_BASE_NUM.rowRank, RANKED_BASE_NUM.val];  // vertical rank 1 [position, product] 
+       let HR_1    = [RANKED_BASE_NUM.colRank, RANKED_BASE_NUM.val];  // horizontal rank 1 [position, product]
+
+        // Considering DENOMINATOR
+        // filter out the products
+       let g_R_2    = global_243[1].find((a)  => a.prod === l5 )          // filter out vaues  
+       let gR_2     = [global_243[1].indexOf(g_R_2), g_R_2.prod];        // Global 2 [position, product] : Denominator
+
+       let vR_2     = [RANKED_BASE_DENO.colRank, RANKED_BASE_DENO.val];   // vertical rank 1 [position, product] 
+       let HR_2     = [RANKED_BASE_DENO.rowRank, RANKED_BASE_DENO.val];  // horizontal rank 1 [position, product]
+
+        // this function generates Horizontal Rank item
+       function generateHorizontalRank(searchKey,ar){ 
+          let bucket    = ar.find((a) => a.find((item) => item.prod === searchKey)  ); // identify the row it belongs to
+          let foundItem = bucket.filter((item) => item.prod === searchKey);
+          return [{'rowRank':ar.indexOf(bucket), 'colRank':bucket.indexOf(foundItem[0]),'val':foundItem[0].prod}];
+        //   return ar.indexOf(bucket);
+        //   return bucket?.indexOf(foundItem);
+       }
+
+       // this function generates Vertical Rank item for the both denominator and the Numerator
+    //    function generateVerticalRank(searchKey,ar){   
+    //            let bucket    = ar.find((a) => a.find((item) => item.prod === searchKey)  ); 
+    //            let foundItem = bucket?.find((item) => item.prod === searchKey);
+
+    //            function getColumnAr(item){ 
+    //                 for(let a of ar){
+    //                    if(a.includes(item)){
+    //                     return ar.indexOf(a);
+    //                    }
+    //                 }  
+    //            }
+    //            let column_a_pos = getColumnAr(foundItem);
+    //            return column_a_pos;
+    //    }
+       let crossP_output =[];
+       function rankCrosProduct(firstRanksSet,secondRankSet){  // firstRanksSet = [gR_1,vR_1,HR_1], secondRankSet = [gR_2,vR_2,HR_2]
+           firstRanksSet.forEach((item1)=>{
+                let totalOdd;
+                secondRankSet.forEach((item2)=>{
+                    totalOdd = Number((item1 * item2).toFixed(2));
+                    crossP_output.push(totalOdd);
+                });
+            });
+       }
+       rankCrosProduct([gR_1[1],vR_1[1],HR_1[1]],[gR_2[1],vR_2[1],HR_2[1]]);
+ return [ { 'gR_1':gR_1, 'vR_1':vR_1,'HR_1':HR_1},{'gR_2':gR_2,'vR_2':vR_2,'HR_2':HR_2}, crossP_output];
+ 
+
+}
 
 
 /*
